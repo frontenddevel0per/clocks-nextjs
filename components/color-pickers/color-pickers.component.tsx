@@ -41,7 +41,7 @@ const ColorPickers: FC = () => {
         />
       </div>
       <div className="color-picker-item">
-        <p>Seconds hand color:</p>
+        <p>Second hand color:</p>
         <MuiColorInput
           value={colors.secondsColor}
           onChange={onSecondsColorChange}

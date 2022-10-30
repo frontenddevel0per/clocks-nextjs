@@ -1,0 +1,80 @@
+.clocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background: rgb(255, 255, 255) center/cover url("../../resources/img/5054.png") no-repeat;
+    border-radius: 100%;
+
+    .seconds-hand-wrapper {
+      height: 10px;
+      width: 10px;
+      border-radius: 100%;
+      border: 2px solid black;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      top: 10px;
+  
+      .seconds-hand {
+        width: 3px;
+        height: 60px;
+        background: red;
+        position: absolute;
+        top: -56px;
+        border-radius: 100px;
+      }
+    }
+
+    .minutes-hand-wrapper {
+      height: 10px;
+      width: 10px;
+      border-radius: 100%;
+      border: 2px solid black;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      // top: -10px;
+  
+      .minutes-hand {
+        width: 3px;
+        height: 55px;
+        background: green;
+        position: absolute;
+        top: -51px;
+        border-radius: 100px;
+      }
+    }
+
+    .hours-hand-wrapper {
+      height: 10px;
+      width: 10px;
+      border-radius: 100%;
+      border: 2px solid black;
+      background: black;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      top: -10px;
+  
+      .hours-hand {
+        width: 3px;
+        height: 45px;
+        background: rgb(0, 0, 255);
+        position: absolute;
+        top: -41px;
+        border-radius: 100px;
+      }
+    }
+
+    .clocks-center {
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      position: absolute;
+      top: 70px;
+      background: black;
+    }
+  }

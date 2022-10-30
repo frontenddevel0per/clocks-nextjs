@@ -45,6 +45,7 @@ const Clocks: FC = ({}) => {
           style={{ background: colors.hoursColor }}
         ></div>
       </div>
+      <div className="clocks-center"></div>
     </div>
   );
 };
