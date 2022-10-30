@@ -1,15 +1,16 @@
 import { FC } from "react";
 import { MuiColorInput } from "mui-color-input";
-import { ColorPickersProps } from "./color-pickers.types";
-
-const ColorPickers: FC<ColorPickersProps> = ({
-  hoursColor,
-  minutesColor,
-  secondsColor,
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import {
   setHoursColor,
   setMinutesColor,
   setSecondsColor,
-}) => {
+} from "../../redux/colors/colors.slice";
+import { colorsValueSelector } from "../helpers";
+
+const ColorPickers: FC = () => {
+  const colors = useAppSelector(colorsValueSelector);
+
   const onHoursColorChange = (color: string) => {
     setHoursColor(color);
   };
@@ -21,19 +22,29 @@ const ColorPickers: FC<ColorPickersProps> = ({
   const onSecondsColorChange = (color: string) => {
     setSecondsColor(color);
   };
+
   return (
     <div className="color-pickers">
       <div className="color-pickers-item">
         <p>Hour hand color:</p>
-        <MuiColorInput value={hoursColor} onChange={onHoursColorChange} />
+        <MuiColorInput
+          value={colors.hoursColor}
+          onChange={onHoursColorChange}
+        />
       </div>
       <div className="color-picker-item">
         <p>Minute hand color:</p>
-        <MuiColorInput value={minutesColor} onChange={onMinutesColorChange} />
+        <MuiColorInput
+          value={colors.minutesColor}
+          onChange={onMinutesColorChange}
+        />
       </div>
       <div className="color-picker-item">
         <p>Seconds hand color:</p>
-        <MuiColorInput value={secondsColor} onChange={onSecondsColorChange} />
+        <MuiColorInput
+          value={colors.secondsColor}
+          onChange={onSecondsColorChange}
+        />
       </div>
     </div>
   );

@@ -1,38 +1,27 @@
 import { useState, useEffect } from "react";
 import Clocks from "../components/clocks/clocks.component";
 import ColorPickers from "../components/color-pickers/color-pickers.component";
-import { getTime } from "../components/helpers";
+import { getTime, dateValueSelector } from "../components/helpers";
+import { setDate } from "../redux/date/date.slice";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
 
 export default function Home() {
-  const [date, setDate] = useState(0);
-  const [hoursColor, setHoursColor] = useState("red");
-  const [minutesColor, setMinutesColor] = useState("green");
-  const [secondsColor, setSecondsColor] = useState("orange");
+  const dispatch = useAppDispatch();
+  const date = useAppSelector(dateValueSelector);
 
   useEffect(() => {
-    setInterval(() => setDate(Date.now()), 70);
+    setInterval(() => dispatch(setDate(Date.now())), 70);
+    return clearInterval(0);
   }, []);
 
   return (
     <div className="wrapper">
-      <Clocks
-        secondsColor={secondsColor}
-        minutesColor={minutesColor}
-        hoursColor={hoursColor}
-        date={date}
-      />
+      <Clocks />
       <h2>
         It`s {getTime(date).hours}:{getTime(date).minutes}:
         {getTime(date).seconds}
       </h2>
-      <ColorPickers
-        hoursColor={hoursColor}
-        setHoursColor={setHoursColor}
-        minutesColor={minutesColor}
-        setMinutesColor={setMinutesColor}
-        secondsColor={secondsColor}
-        setSecondsColor={setSecondsColor}
-      />
+      <ColorPickers />
     </div>
   );
 }

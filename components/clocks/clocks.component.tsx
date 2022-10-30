@@ -1,17 +1,15 @@
 import { FC, useEffect, useState } from "react";
+import { dateValueSelector, colorsValueSelector } from "../helpers";
+import { useAppSelector } from "../../redux/hooks";
 import {
   getSecondsDegrees,
   getMinutesDegrees,
   getHoursDegrees,
 } from "./clocks.helpers";
-import { ClockProps } from "./clocks.types";
 
-const Clocks: FC<ClockProps> = ({
-  secondsColor,
-  minutesColor,
-  hoursColor,
-  date,
-}) => {
+const Clocks: FC = ({}) => {
+  const date = useAppSelector(dateValueSelector);
+  const colors = useAppSelector(colorsValueSelector);
   return (
     <div className="clocks">
       <div
@@ -22,7 +20,7 @@ const Clocks: FC<ClockProps> = ({
       >
         <div
           className="seconds-hand"
-          style={{ background: secondsColor }}
+          style={{ background: colors.secondsColor }}
         ></div>
       </div>
       <div
@@ -33,7 +31,7 @@ const Clocks: FC<ClockProps> = ({
       >
         <div
           className="minutes-hand"
-          style={{ background: minutesColor }}
+          style={{ background: colors.minutesColor }}
         ></div>
       </div>
       <div
@@ -42,7 +40,10 @@ const Clocks: FC<ClockProps> = ({
           transform: `rotate(${getHoursDegrees(date)}deg)`,
         }}
       >
-        <div className="hours-hand" style={{ background: hoursColor }}></div>
+        <div
+          className="hours-hand"
+          style={{ background: colors.hoursColor }}
+        ></div>
       </div>
     </div>
   );

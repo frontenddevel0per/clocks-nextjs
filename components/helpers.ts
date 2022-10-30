@@ -1,3 +1,5 @@
+import { RootState } from "../redux/store";
+
 export const getTime = (date: number) => {
   const seconds =
     new Date(date).getSeconds() > 9
@@ -13,4 +15,12 @@ export const getTime = (date: number) => {
       : `0${new Date(date).getHours()}`;
 
   return { seconds, minutes, hours };
+};
+
+export const dateValueSelector = (state: RootState) => {
+  return state.date.value;
+};
+
+export const colorsValueSelector = (state: RootState) => {
+  return state.colors.value;
 };
