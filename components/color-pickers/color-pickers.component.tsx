@@ -9,18 +9,19 @@ import {
 import { colorsValueSelector } from "../helpers";
 
 const ColorPickers: FC = () => {
+  const dispatch = useAppDispatch();
   const colors = useAppSelector(colorsValueSelector);
 
   const onHoursColorChange = (color: string) => {
-    setHoursColor(color);
+    dispatch(setHoursColor(color));
   };
 
   const onMinutesColorChange = (color: string) => {
-    setMinutesColor(color);
+    dispatch(setMinutesColor(color));
   };
 
   const onSecondsColorChange = (color: string) => {
-    setSecondsColor(color);
+    dispatch(setSecondsColor(color));
   };
 
   return (
