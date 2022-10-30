@@ -16,29 +16,29 @@ export default function Home() {
       ((new Date(date).getSeconds() * 1000 + new Date(date).getMilliseconds()) /
         60000) *
       360
-    );
+    ).toFixed(3);
   };
 
   const getMinutesDegrees = (date: number) => {
-    return Math.round(
+    return (
       ((new Date(date).getMinutes() * 60 + new Date(date).getSeconds()) /
         3600) *
-        360
-    );
+      360
+    ).toFixed(3);
   };
 
   const getHoursDegrees = (date: number) => {
     if (new Date(date).getHours() >= 12) {
-      return Math.round(
+      return (
         (((new Date(date).getHours() - 12) * 60 + new Date(date).getMinutes()) /
           720) *
-          360
-      );
+        360
+      ).toFixed(3);
     } else {
-      return Math.round(
+      return (
         ((new Date(date).getHours() * 60 + new Date(date).getMinutes()) / 720) *
-          360
-      );
+        360
+      ).toFixed(3);
     }
   };
 
